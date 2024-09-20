@@ -21,27 +21,7 @@ Alice Johnson, Bob Brown, David Clark, Eva Green, Grace Lee, Jack Taylor
 
 ```
 
-#### Example 2
-```
-python availability.py example.csv -f 14
-```
-Translated as: give me the 3 best timeslots that are no earlier than 14:00. 
-
-Output: 
-```
-Best slot(s):
-
-6 available on FR 15:00
-Alice Johnson, Bob Brown, David Clark, Jack Taylor, Jane Smith, Karen Scott
-
-6 available on FR 15:15
-Alice Johnson, Bob Brown, David Clark, Jack Taylor, Jane Smith, Karen Scott
-
-6 available on FR 15:30
-Alice Johnson, Bob Brown, David Clark, Jack Taylor, Jane Smith, Karen Scott
-```
-
-#### Example 3
+#### Example 2: Alternating Timeslots
 ```
 python availability.py example.csv -n 2 -b 5 -s 8
 ```
