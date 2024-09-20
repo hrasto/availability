@@ -45,7 +45,7 @@ Alice Johnson, Bob Brown, David Clark, Jack Taylor, Jane Smith, Karen Scott
 ```
 python availability.py example.csv -n 2 -b 5 -s 8
 ```
-Translated as: give me the 5 best timeslot pairs, where everyone is available on at least one of the timeslots, and the timeslot is 2 hours long (8*15min). This is useful when planning meetings that will have alternating timeslot every week, so that more people can get the chance to attent at least once every 2 weeks.
+Translated as: give me the 5 best timeslot pairs, where everyone is available on at least one of the timeslots, and the timeslot is 2 hours long (8*15min). This is useful when planning meetings that will have alternating timeslot every week, so that more people can get the chance to attend at least once every 2 weeks.
 
 Output: 
 ```
