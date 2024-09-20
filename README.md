@@ -1,5 +1,6 @@
 # availability.py
 Python command line program to help you decide meeting times. 
+There is currently no error handling, so you need to follow the instructions.
 
 #### Example 1
 ```
