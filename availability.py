@@ -26,17 +26,22 @@ parser.add_argument('-n', '--num_slots', default=1, type=int, help='how many slo
 parser.add_argument('-b', '--best_n', default=3, type=int, help='how many slot candidates to print in order from best to worst')
 parser.add_argument('-s', '--slot_size', default=6, type=int, help='integer slot size, each unit is 15 minutes, so 6 implies 1h30min slot size')
 parser.add_argument('-d', '--weekdays', default=['MO', 'TU', 'WE', 'TH', 'FR'], nargs='+', type=str, help='weekdays to consider; they match the first 2 letters used in the availability entries of the .csv')
+parser.add_argument('-f', '--first_hr', default=8, type=int, help='hour that the day starts')
+parser.add_argument('-l', '--last_hr', default=19, type=int, help='hour that the day ends')
 
 args = parser.parse_args()
+
+lh = float(max(min(24, args.last_hr), 1))
+fh = float(min(lh-1, max(args.first_hr, 0)))
 
 def decode(short): 
     day = short[:2]
 
-    start = 8.0
+    start = fh
     if len(short) > 2: 
         start = float(short[2:4]) + float(short[4:6])/60
 
-    stop = 18.5
+    stop = lh
     if len(short) == 10:
         stop = float(short[6:8]) + float(short[8:10])/60
     
@@ -63,7 +68,7 @@ with open(args.filename) as f:
 
 all_slots = []
 for day in args.weekdays: 
-    for hr in range(8, 19): 
+    for hr in range(int(fh), int(lh)): 
         for hrpart in range(4):
             slot_start = (hr + hrpart/4)
             times = set((day, slot_start+i*.25) for i in range(args.slot_size))
